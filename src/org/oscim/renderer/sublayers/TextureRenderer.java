@@ -55,7 +55,8 @@ public final class TextureRenderer {
 	}
 
 	public static Layer draw(Layer layer, float scale, Matrices m) {
-		GLState.test(false, false);
+		//GLState.test(false, false);
+
 		GLState.blend(true);
 
 		GLState.useProgram(mTextureProgram);
