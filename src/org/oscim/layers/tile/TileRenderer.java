@@ -21,6 +21,7 @@ import org.oscim.core.MapPosition;
 import org.oscim.core.Tile;
 import org.oscim.renderer.GLRenderer;
 import org.oscim.renderer.GLRenderer.Matrices;
+import org.oscim.renderer.GLState;
 import org.oscim.renderer.sublayers.BitmapRenderer;
 import org.oscim.renderer.sublayers.Layer;
 import org.oscim.renderer.sublayers.LineRenderer;
@@ -108,6 +109,8 @@ public class TileRenderer {
 
 		// clear reference
 		mMatrices = null;
+
+		GLState.test(false, false);
 	}
 
 	private static void drawTile(MapTile tile, MapPosition pos) {

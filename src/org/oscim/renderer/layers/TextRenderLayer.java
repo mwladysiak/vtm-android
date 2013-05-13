@@ -37,7 +37,6 @@ import org.oscim.layers.tile.TileSet;
 import org.oscim.renderer.BufferObject;
 import org.oscim.renderer.GLRenderer;
 import org.oscim.renderer.GLRenderer.Matrices;
-import org.oscim.renderer.GLState;
 import org.oscim.renderer.sublayers.Layer;
 import org.oscim.renderer.sublayers.Layers;
 import org.oscim.renderer.sublayers.LineLayer;
@@ -606,12 +605,12 @@ public class TextRenderLayer extends BasicRenderLayer {
 
 		tl.labels = mLabels;
 		// draw text to bitmaps and create vertices
-		tl.prepare();
+		//	tl.prepare();
 
 		// after 'prepare' TextLayer does not need TextItems
 		mPrevLabels = mLabels;
 		mLabels = null;
-		tl.labels = null;
+		//tl.labels = null;
 
 		// remove tile locks
 		mTileLayer.releaseTiles(mTileSet);
@@ -690,6 +689,9 @@ public class TextRenderLayer extends BasicRenderLayer {
 			}
 
 			// set new TextLayer to be uploaded and rendered
+			mNextLayer.prepare();
+			mNextLayer.labels = null;
+
 			layers.textureLayers = mNextLayer;
 			mNextLayer = null;
 
@@ -717,6 +719,8 @@ public class TextRenderLayer extends BasicRenderLayer {
 
 	@Override
 	public void compile() {
+
+
 		int newSize = layers.getSize();
 
 		if (newSize == 0) {
@@ -738,7 +742,7 @@ public class TextRenderLayer extends BasicRenderLayer {
 	public synchronized void render(MapPosition pos, Matrices m) {
 
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, layers.vbo.id);
-		GLState.test(false, false);
+		//GLState.test(false, false);
 
 		float scale = (float) (mMapPosition.scale / pos.scale);
 

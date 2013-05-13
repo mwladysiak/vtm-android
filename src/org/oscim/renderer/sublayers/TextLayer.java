@@ -17,11 +17,15 @@ package org.oscim.renderer.sublayers;
 import static org.oscim.renderer.GLRenderer.COORD_SCALE;
 import static org.oscim.renderer.sublayers.TextureItem.TEXTURE_HEIGHT;
 import static org.oscim.renderer.sublayers.TextureItem.TEXTURE_WIDTH;
+
+import java.nio.ShortBuffer;
+
 import android.graphics.Canvas;
+import android.util.Log;
 
 public final class TextLayer extends TextureLayer {
 
-	//private static String TAG = TextureLayer.class.getName();
+	private static String TAG = TextureLayer.class.getName();
 
 	private final static int LBIT_MASK = 0xfffffffe;
 
@@ -91,6 +95,7 @@ public final class TextLayer extends TextureLayer {
 		float yy;
 
 		TextureItem to = TextureItem.get(true);
+		Log.d(TAG, this + " bind " + to.bitmap);
 		textures = to;
 		mCanvas.setBitmap(to.bitmap);
 
@@ -114,6 +119,7 @@ public final class TextLayer extends TextureLayer {
 
 					to.next = TextureItem.get(true);
 					to = to.next;
+					Log.d(TAG, this + " bind " + to.bitmap);
 
 					mCanvas.setBitmap(to.bitmap);
 
@@ -261,9 +267,17 @@ public final class TextLayer extends TextureLayer {
 		to.offset = offsetIndices;
 		to.vertices = (short) (numIndices - offsetIndices);
 
+		Log.d(TAG, this + " fini " + to.bitmap);
+
 		return true;
 	}
 
+	@Override
+	protected void compile(ShortBuffer sbuf) {
+		super.compile(sbuf);
+		if (textures != null)
+			Log.d(TAG, this + "tex  " + textures.id);
+	}
 	@Override
 	public void clear() {
 		TextureItem.releaseAll(textures);
