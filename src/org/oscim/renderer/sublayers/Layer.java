@@ -18,7 +18,7 @@ import java.nio.ShortBuffer;
 
 import org.oscim.utils.pool.Inlist;
 /**
- * @authorHannes Janetzek
+ * @author Hannes Janetzek
  */
 public abstract class Layer extends Inlist<Layer>{
 	public final static byte LINE = 0;

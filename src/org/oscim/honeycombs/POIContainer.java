@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hannes Janetzek
+ * Copyright 2013
  *
  * This program is free software: you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by the Free Software
@@ -12,19 +12,22 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.oscim.core;
+package org.oscim.honeycombs;
 
-public class PointD {
-	public double x;
-	public double y;
-	public PointD() {
+import java.util.ArrayList;
+import java.util.List;
+
+public class POIContainer {
+
+	private final int id;
+	private final List<String> pois;
+
+
+	public POIContainer(int id){
+		this.id = id;
+		pois = new ArrayList<String>();
+
 	}
-	public PointD(double x, double y){
-		this.x = x;
-		this.y = y;
-	}
-	@Override
-	public String toString(){
-		return x + " " + y;
-	}
+
+
 }

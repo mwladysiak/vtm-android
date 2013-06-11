@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hannes Janetzek
+ * Copyright 2013
  *
  * This program is free software: you can redistribute it and/or modify it under the
  * terms of the GNU Lesser General Public License as published by the Free Software
@@ -12,19 +12,37 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.oscim.core;
+package org.oscim.renderer.layers;
 
-public class PointD {
-	public double x;
-	public double y;
-	public PointD() {
+import org.oscim.core.MapPosition;
+import org.oscim.renderer.GLRenderer.Matrices;
+import org.oscim.renderer.RenderLayer;
+import org.oscim.view.MapView;
+
+public class HexagonRenderLayer extends RenderLayer {
+
+	public HexagonRenderLayer(MapView mapView) {
+		super(mapView);
+		// TODO Auto-generated constructor stub
 	}
-	public PointD(double x, double y){
-		this.x = x;
-		this.y = y;
-	}
+
 	@Override
-	public String toString(){
-		return x + " " + y;
+	public void update(MapPosition position, boolean changed, Matrices matrices) {
+		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void compile() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void render(MapPosition position, Matrices matrices) {
+		// TODO Auto-generated method stub
+
+	}
+
+
 }
